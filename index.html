@@ -5,56 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart App Banner</title>
     <style>
-        /* Add your custom CSS styles here for the banner */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f2f2f2;
         }
-        #smart-app-banner {
+        
+        .smart-app-banner {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
+            background-color: #0073e6;
+            color: #ffffff;
             padding: 10px;
+            text-align: center;
             display: none;
+            transition: transform 0.3s ease-in-out;
         }
-        #smart-app-banner p {
-            margin: 0;
-            font-size: 16px;
-        }
-        #smart-app-banner button {
+
+        .smart-app-banner button {
             background-color: #fff;
-            color: #007bff;
+            color: #0073e6;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             margin-top: 10px;
             cursor: pointer;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <!-- Smart App Banner HTML -->
-    <div id="smart-app-banner">
-        <p>Get our mobile app for the best experience!</p>
+    <div class="smart-app-banner">
+        <p>Download Our App for a Better Experience!</p>
         <button id="install-button">Install Now</button>
+        <button id="closeBanner">Close</button>
     </div>
 
     <script>
-        // JavaScript for the Smart App Banner
-        const banner = document.getElementById('smart-app-banner');
+        const banner = document.querySelector('.smart-app-banner');
+        const closeButton = document.getElementById('closeBanner');
         const installButton = document.getElementById('install-button');
 
-        // Check if the user is on a mobile device (you can customize this check)
+        closeButton.addEventListener('click', () => {
+            banner.style.transform = 'translateY(-100%)';
+        });
+
         const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        console.log("New Javascript Executed");
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
         if (isMobileDevice) {
-            // Show the banner
+        // Show the banner
             banner.style.display = 'block';
 
             // Add an event listener to the "Install Now" button
@@ -69,8 +71,16 @@
                 if (/android/i.test(userAgent)) {
                     window.location.href = 'https://play.google.com/store/apps/details?id=com.cryptoxpressmobile';
                 }
+
             });
         }
+
+        // Show the banner after a few seconds (simulating a delay)
+        setTimeout(() => {
+            banner.style.display = 'block';
+        }, 2000);
+
+
     </script>
 </body>
 </html>

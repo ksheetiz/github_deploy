@@ -5,111 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart App Banner</title>
     <style>
-       /* Basic styles for the smart app banner */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f2f2f2;
-}
-
-#smart-app-banner {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    z-index: 999;
-}
-
-#smart-app-banner .content {
-    padding: 10px;
-}
-
-#smart-app-banner h1 {
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-#smart-app-banner p {
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-#smart-app-banner button {
-    background-color: #fff;
-    color: #007bff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.page-content {
-    padding: 20px;
-}
-
+        /* Add your custom CSS styles here for the banner */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #smart-app-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            display: none;
+        }
+        #smart-app-banner p {
+            margin: 0;
+            font-size: 16px;
+        }
+        #smart-app-banner button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <!-- Smart App Banner HTML -->
     <div id="smart-app-banner">
-        <div class="content">
-            <h1>Get Our App</h1>
-            <p>Download our app for the best experience!</p>
-            <button id="download-button">Download Now</button>
-        </div>
+        <p>Get our mobile app for the best experience!</p>
+        <button id="install-button">Install Now</button>
     </div>
-    <div class="page-content">
-        <!-- Your website content goes here -->
-    </div>
+
     <script>
-        // JavaScript for showing/hiding the smart app banner
-        const smartAppBanner = document.getElementById('smart-app-banner');
-        const downloadButton = document.getElementById('download-button');
+        // JavaScript for the Smart App Banner
+        const banner = document.getElementById('smart-app-banner');
+        const installButton = document.getElementById('install-button');
+
+        // Check if the user is on a mobile device (you can customize this check)
         const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        console.log("New Javascript Executed");
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        // Check if the user has already dismissed the banner
-        if (localStorage.getItem('appBannerDismissed') !== 'true') {
-            smartAppBanner.style.display = 'block';
+        if (isMobileDevice) {
+            // Show the banner
+            banner.style.display = 'block';
+
+            // Add an event listener to the "Install Now" button
+            installButton.addEventListener('click', () => {
+                // You can customize this part to redirect the user to the app store
+                // For example, for iOS:
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    window.location.href = 'https://apps.apple.com/us/app/cryptoxpress/id1591792414';
+                }
+                // For Android:
+                // window.location.href = 'https://play.google.com/store/apps/details?id=your.package.name';
+                if (/android/i.test(userAgent)) {
+                    window.location.href = 'https://play.google.com/store/apps/details?id=com.cryptoxpressmobile';
+                }
+
+            });
         }
-
-        downloadButton.addEventListener('click', () => {
-            // You can add logic here to redirect the user to the app store or play store
-            // For example, window.location.href = 'your-app-store-url';
-            if (isMobileDevice) {
-                // Show the banner
-                banner.style.display = 'block';
-
-                // Add an event listener to the "Install Now" button
-                installButton.addEventListener('click', () => {
-                    // You can customize this part to redirect the user to the app store
-                    // For example, for iOS:
-                    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                        window.location.href = 'https://apps.apple.com/us/app/cryptoxpress/id1591792414';
-                    }
-                    // For Android:
-                    // window.location.href = 'https://play.google.com/store/apps/details?id=your.package.name';
-                    if (/android/i.test(userAgent)) {
-                        window.location.href = 'https://play.google.com/store/apps/details?id=com.cryptoxpressmobile';
-                    }
-
-                });
-            }
-            // For this example, we'll just dismiss the banner
-            //smartAppBanner.style.display = 'none';
-            localStorage.setItem('appBannerDismissed', 'true');
-        });
-
-    
     </script>
 </body>
 </html>
-
-
-
-

@@ -5,78 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart App Banner</title>
     <style>
-        /* Smart App Banner Styles */
-        .smart-app-banner {
-            display: none;
+        /* Add your custom CSS styles here for the banner */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #smart-app-banner {
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
             background-color: #007bff;
             color: #fff;
-            padding: 10px;
             text-align: center;
-            z-index: 999;
+            padding: 10px;
+            display: none;
         }
-
-        .smart-app-banner img {
-            width: 30px;
-            vertical-align: middle;
-            margin-right: 10px;
+        #smart-app-banner p {
+            margin: 0;
+            font-size: 16px;
         }
-
-        /* iOS Smart App Banner */
-        .ios .smart-app-banner-ios {
-            display: block;
-        }
-
-        /* Android Smart App Banner */
-        .android .smart-app-banner-android {
-            display: block;
+        #smart-app-banner button {
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <!-- Smart App Banner for iOS -->
-    <div class="smart-app-banner ios">
-        <div class="smart-app-banner-ios">
-            <img src="ios-icon.png" alt="iOS App Icon">
-            Get our iOS App now!
-        </div>
+    <!-- Smart App Banner HTML -->
+    <div id="smart-app-banner">
+        <p>Get our mobile app for the best experience!</p>
+        <button id="install-button">Install Now</button>
     </div>
-
-    <!-- Smart App Banner for Android -->
-    <div class="smart-app-banner android">
-        <div class="smart-app-banner-android">
-            <img src="android-icon.png" alt="Android App Icon">
-            Get our Android App now!
-        </div>
-    </div>
-
-    <!-- Your website content here -->
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
     <script>
-        // JavaScript to detect the user's platform and show the appropriate banner
-        // const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        // const isAndroid = /Android/.test(navigator.userAgent);
+        // JavaScript for the Smart App Banner
+        const banner = document.getElementById('smart-app-banner');
+        const installButton = document.getElementById('install-button');
 
-        // if (isIOS) {
-        //     document.querySelector('.ios').classList.add('show');
-        // } else if (isAndroid) {
-        //     document.querySelector('.android').classList.add('show');
-        // }
-        console.log("Javascript Executed");
+        // Check if the user is on a mobile device (you can customize this check)
+        const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        console.log("New Javascript Executed");
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        console.log(userAgent);
-        if (/windows phone/i.test(userAgent)) {
-            console.log("Windows")
-        }
-        if (/android/i.test(userAgent)) {
-            document.querySelector('.android').classList.add('show');
-        }
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            console.log("IOS")
+
+        if (isMobileDevice) {
+            // Show the banner
+            banner.style.display = 'block';
+
+            // Add an event listener to the "Install Now" button
+            installButton.addEventListener('click', () => {
+                // You can customize this part to redirect the user to the app store
+                // For example, for iOS:
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    window.location.href = 'https://apps.apple.com/us/app/cryptoxpress/id1591792414';
+                }
+                // For Android:
+                // window.location.href = 'https://play.google.com/store/apps/details?id=your.package.name';
+                if (/android/i.test(userAgent)) {
+                    window.location.href = 'https://play.google.com/store/apps/details?id=com.cryptoxpressmobile';
+                }
+            });
         }
     </script>
 </body>

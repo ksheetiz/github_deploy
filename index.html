@@ -73,7 +73,7 @@
             console.log("Windows")
         }
         if (/android/i.test(userAgent)) {
-            console.log("Android")
+            document.querySelector('.android').classList.add('show');
         }
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
             console.log("IOS")

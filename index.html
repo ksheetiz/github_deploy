@@ -58,13 +58,25 @@
 
     <script>
         // JavaScript to detect the user's platform and show the appropriate banner
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        const isAndroid = /Android/.test(navigator.userAgent);
+        // const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        // const isAndroid = /Android/.test(navigator.userAgent);
 
-        if (isIOS) {
-            document.querySelector('.ios').classList.add('show');
-        } else if (isAndroid) {
-            document.querySelector('.android').classList.add('show');
+        // if (isIOS) {
+        //     document.querySelector('.ios').classList.add('show');
+        // } else if (isAndroid) {
+        //     document.querySelector('.android').classList.add('show');
+        // }
+        console.log("Javascript Executed");
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        console.log(userAgent);
+        if (/windows phone/i.test(userAgent)) {
+            console.log("Windows")
+        }
+        if (/android/i.test(userAgent)) {
+            console.log("Android")
+        }
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            console.log("IOS")
         }
     </script>
 </body>

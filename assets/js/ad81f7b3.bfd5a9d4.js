@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcryptoxpress_docs_external=self.webpackChunkcryptoxpress_docs_external||[]).push([[8303],{9244:e=>{e.exports=JSON.parse('{"title":"FAQ\'s","slug":"/category/faqs","permalink":"/latest/category/faqs","navigation":{"previous":{"title":"Hospitality Hub","permalink":"/latest/travel/hotels"},"next":{"title":"FAQ\'s","permalink":"/latest/faqs/"}}}')}}]);

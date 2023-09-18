@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcryptoxpress_docs_external=self.webpackChunkcryptoxpress_docs_external||[]).push([[7199],{9879:t=>{t.exports=JSON.parse('{"title":"Basics","slug":"/category/basics","permalink":"/github_deploy/latest/category/basics","navigation":{"next":{"title":"Introduction","permalink":"/github_deploy/latest/basics/introduction"}}}')}}]);
